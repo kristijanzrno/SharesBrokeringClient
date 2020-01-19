@@ -1,0 +1,6 @@
+module AlamofireSoap {
+  umbrella header "AlamofireSoap-umbrella.h"
+
+  export *
+  module * { export * }
+}

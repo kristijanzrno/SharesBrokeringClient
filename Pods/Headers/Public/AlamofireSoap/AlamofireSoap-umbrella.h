@@ -1,0 +1,1 @@
+../../../Target Support Files/AlamofireSoap/AlamofireSoap-umbrella.h

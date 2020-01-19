@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_SharesBrokeringClient_SharesBrokeringClientUITests : NSObject
+@end
+@implementation PodsDummy_Pods_SharesBrokeringClient_SharesBrokeringClientUITests
+@end

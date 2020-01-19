@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.0.0-rc.3)
+  - AlamofireSoap (0.1.3):
+    - Alamofire (~> 5.0.0-rc.2)
+  - SOAPEngine (1.43)
+
+DEPENDENCIES:
+  - AlamofireSoap
+  - SOAPEngine
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireSoap
+    - SOAPEngine
+
+SPEC CHECKSUMS:
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  AlamofireSoap: 3ff94d1b9a9dccc6fde075c8f5ee1986b78a0c23
+  SOAPEngine: 4c6da25535c74150dde84c97e36edc55131a5e8f
+
+PODFILE CHECKSUM: 9f3e5147bc3c4fd0bf96742694abd648bacb551f
+
+COCOAPODS: 1.8.4

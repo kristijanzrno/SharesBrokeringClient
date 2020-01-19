@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireSoap
 
 class LoginScreen: UIViewController {
 
@@ -15,11 +16,17 @@ class LoginScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
     }
 
     @IBAction func login(_ sender: Any) {
-        //TODO send soap request and check response
-    }
+         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "ns4:login",
+                                   soapparameters: ["arg0":"admin","arg1":"admin"], namespace: "").responseString { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+                   print("Result: \(response.value)")
+           }
+         }
+      /*AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "login", soapparameters: ["arg0":"admin","arg1":"admin"], namespace: "http://tempuri.org")*/
     
 }

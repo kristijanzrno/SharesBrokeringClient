@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E755C3F4CFE4793FE1364D9 /* libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5035E59D37C51333F8585E36 /* libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a */; };
 		6E48D84423D4DE5E00A22720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D84323D4DE5E00A22720 /* AppDelegate.swift */; };
 		6E48D84623D4DE5E00A22720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D84523D4DE5E00A22720 /* SceneDelegate.swift */; };
 		6E48D84823D4DE5E00A22720 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D84723D4DE5E00A22720 /* MainScreen.swift */; };
@@ -19,6 +20,10 @@
 		6E48D87823D4E21D00A22720 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D87723D4E21D00A22720 /* LoginScreen.swift */; };
 		6E48D87A23D4E2B800A22720 /* AccountSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D87923D4E2B800A22720 /* AccountSettingsScreen.swift */; };
 		6E48D87C23D4E30F00A22720 /* TabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E48D87B23D4E30F00A22720 /* TabbedViewController.swift */; };
+		6E495BD423D50E06005B5071 /* AlamoSOAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E495BD323D50E06005B5071 /* AlamoSOAP.swift */; };
+		6E495BD623D51668005B5071 /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E495BD523D51668005B5071 /* WSClient.swift */; };
+		C4A3A863DA337B9802E2A507 /* libPods-SharesBrokeringClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAFE16F8AF1519068AC7F22 /* libPods-SharesBrokeringClientTests.a */; };
+		F1DB6EAD7B5C01127F9F09C0 /* libPods-SharesBrokeringClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D9CF3D281F75AF38386D9 /* libPods-SharesBrokeringClient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FAFE16F8AF1519068AC7F22 /* libPods-SharesBrokeringClientTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SharesBrokeringClientTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		220B7B519E60535C07342766 /* Pods-SharesBrokeringClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient.release.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient/Pods-SharesBrokeringClient.release.xcconfig"; sourceTree = "<group>"; };
+		4F1D9CF3D281F75AF38386D9 /* libPods-SharesBrokeringClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SharesBrokeringClient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5035E59D37C51333F8585E36 /* libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB119C58F2FDDEA13309F4F /* Pods-SharesBrokeringClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient.debug.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient/Pods-SharesBrokeringClient.debug.xcconfig"; sourceTree = "<group>"; };
 		6E48D84023D4DE5E00A22720 /* SharesBrokeringClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharesBrokeringClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E48D84323D4DE5E00A22720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E48D84523D4DE5E00A22720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +67,13 @@
 		6E48D87723D4E21D00A22720 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		6E48D87923D4E2B800A22720 /* AccountSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsScreen.swift; sourceTree = "<group>"; };
 		6E48D87B23D4E30F00A22720 /* TabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedViewController.swift; sourceTree = "<group>"; };
+		6E495BD223D4F2BB005B5071 /* SOAPEngineBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOAPEngineBridgingHeader.h; sourceTree = "<group>"; };
+		6E495BD323D50E06005B5071 /* AlamoSOAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoSOAP.swift; sourceTree = "<group>"; };
+		6E495BD523D51668005B5071 /* WSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
+		7F3C7804174694555D0B6C03 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient-SharesBrokeringClientUITests/Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A37A838838EBA0994B9D9E65 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient-SharesBrokeringClientUITests/Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B96C7F97ECA08DC425FA3F8B /* Pods-SharesBrokeringClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClientTests.release.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClientTests/Pods-SharesBrokeringClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		EF68689007E9EC8B81411D76 /* Pods-SharesBrokeringClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClientTests.debug.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClientTests/Pods-SharesBrokeringClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1DB6EAD7B5C01127F9F09C0 /* libPods-SharesBrokeringClient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A3A863DA337B9802E2A507 /* libPods-SharesBrokeringClientTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E755C3F4CFE4793FE1364D9 /* libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +111,8 @@
 				6E48D85B23D4DE6000A22720 /* SharesBrokeringClientTests */,
 				6E48D86623D4DE6000A22720 /* SharesBrokeringClientUITests */,
 				6E48D84123D4DE5E00A22720 /* Products */,
+				FB89F22292BCD0A63360DD68 /* Pods */,
+				E4A6EA2CE4ECAABE0B74F747 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +140,9 @@
 				6E48D84E23D4DE6000A22720 /* Assets.xcassets */,
 				6E48D85023D4DE6000A22720 /* LaunchScreen.storyboard */,
 				6E48D85323D4DE6000A22720 /* Info.plist */,
+				6E495BD223D4F2BB005B5071 /* SOAPEngineBridgingHeader.h */,
+				6E495BD323D50E06005B5071 /* AlamoSOAP.swift */,
+				6E495BD523D51668005B5071 /* WSClient.swift */,
 			);
 			path = SharesBrokeringClient;
 			sourceTree = "<group>";
@@ -140,6 +165,29 @@
 			path = SharesBrokeringClientUITests;
 			sourceTree = "<group>";
 		};
+		E4A6EA2CE4ECAABE0B74F747 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F1D9CF3D281F75AF38386D9 /* libPods-SharesBrokeringClient.a */,
+				5035E59D37C51333F8585E36 /* libPods-SharesBrokeringClient-SharesBrokeringClientUITests.a */,
+				0FAFE16F8AF1519068AC7F22 /* libPods-SharesBrokeringClientTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB89F22292BCD0A63360DD68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AB119C58F2FDDEA13309F4F /* Pods-SharesBrokeringClient.debug.xcconfig */,
+				220B7B519E60535C07342766 /* Pods-SharesBrokeringClient.release.xcconfig */,
+				A37A838838EBA0994B9D9E65 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig */,
+				7F3C7804174694555D0B6C03 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig */,
+				EF68689007E9EC8B81411D76 /* Pods-SharesBrokeringClientTests.debug.xcconfig */,
+				B96C7F97ECA08DC425FA3F8B /* Pods-SharesBrokeringClientTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,6 +195,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E48D86C23D4DE6000A22720 /* Build configuration list for PBXNativeTarget "SharesBrokeringClient" */;
 			buildPhases = (
+				F29B2A7A9E60049F18EF1FD1 /* [CP] Check Pods Manifest.lock */,
 				6E48D83C23D4DE5E00A22720 /* Sources */,
 				6E48D83D23D4DE5E00A22720 /* Frameworks */,
 				6E48D83E23D4DE5E00A22720 /* Resources */,
@@ -164,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E48D86F23D4DE6000A22720 /* Build configuration list for PBXNativeTarget "SharesBrokeringClientTests" */;
 			buildPhases = (
+				65DE6BF3428A64496B31C117 /* [CP] Check Pods Manifest.lock */,
 				6E48D85423D4DE6000A22720 /* Sources */,
 				6E48D85523D4DE6000A22720 /* Frameworks */,
 				6E48D85623D4DE6000A22720 /* Resources */,
@@ -182,6 +232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E48D87223D4DE6000A22720 /* Build configuration list for PBXNativeTarget "SharesBrokeringClientUITests" */;
 			buildPhases = (
+				031E0F783AB652198DE2E4CA /* [CP] Check Pods Manifest.lock */,
 				6E48D85F23D4DE6000A22720 /* Sources */,
 				6E48D86023D4DE6000A22720 /* Frameworks */,
 				6E48D86123D4DE6000A22720 /* Resources */,
@@ -266,6 +317,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		031E0F783AB652198DE2E4CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SharesBrokeringClient-SharesBrokeringClientUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65DE6BF3428A64496B31C117 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SharesBrokeringClientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F29B2A7A9E60049F18EF1FD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SharesBrokeringClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6E48D83C23D4DE5E00A22720 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,11 +393,13 @@
 			files = (
 				6E48D84A23D4DE5E00A22720 /* AccountSharesScreen.swift in Sources */,
 				6E48D87C23D4E30F00A22720 /* TabbedViewController.swift in Sources */,
+				6E495BD623D51668005B5071 /* WSClient.swift in Sources */,
 				6E48D84823D4DE5E00A22720 /* MainScreen.swift in Sources */,
 				6E48D87A23D4E2B800A22720 /* AccountSettingsScreen.swift in Sources */,
 				6E48D84423D4DE5E00A22720 /* AppDelegate.swift in Sources */,
 				6E48D84623D4DE5E00A22720 /* SceneDelegate.swift in Sources */,
 				6E48D87823D4E21D00A22720 /* LoginScreen.swift in Sources */,
+				6E495BD423D50E06005B5071 /* AlamoSOAP.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +570,7 @@
 		};
 		6E48D86D23D4DE6000A22720 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AB119C58F2FDDEA13309F4F /* Pods-SharesBrokeringClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +581,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sharers.brokering.SharesBrokeringClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./SharesBrokeringClient/SOAPEngineBridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -465,6 +589,7 @@
 		};
 		6E48D86E23D4DE6000A22720 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 220B7B519E60535C07342766 /* Pods-SharesBrokeringClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -475,6 +600,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = sharers.brokering.SharesBrokeringClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./SharesBrokeringClient/SOAPEngineBridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -482,6 +608,7 @@
 		};
 		6E48D87023D4DE6000A22720 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF68689007E9EC8B81411D76 /* Pods-SharesBrokeringClientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -503,6 +630,7 @@
 		};
 		6E48D87123D4DE6000A22720 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B96C7F97ECA08DC425FA3F8B /* Pods-SharesBrokeringClientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -524,6 +652,7 @@
 		};
 		6E48D87323D4DE6000A22720 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A37A838838EBA0994B9D9E65 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -543,6 +672,7 @@
 		};
 		6E48D87423D4DE6000A22720 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F3C7804174694555D0B6C03 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

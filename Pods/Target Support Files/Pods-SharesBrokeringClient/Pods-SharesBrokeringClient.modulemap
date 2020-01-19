@@ -1,0 +1,6 @@
+module Pods_SharesBrokeringClient {
+  umbrella header "Pods-SharesBrokeringClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

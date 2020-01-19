@@ -1,0 +1,6 @@
+module Pods_SharesBrokeringClient_SharesBrokeringClientUITests {
+  umbrella header "Pods-SharesBrokeringClient-SharesBrokeringClientUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
