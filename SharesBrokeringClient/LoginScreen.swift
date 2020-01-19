@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  LoginScreen.swift
 //  SharesBrokeringClient
 //
 //  Created by Kristijan Zrno on 19/01/2020.
@@ -8,13 +8,18 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class LoginScreen: UIViewController {
 
+    @IBOutlet weak var usernameTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func login(_ sender: Any) {
+        //TODO send soap request and check response
+    }
+    
 }
-
