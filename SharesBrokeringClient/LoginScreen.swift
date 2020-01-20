@@ -21,7 +21,7 @@ class LoginScreen: UIViewController {
     }
 
     @IBAction func login(_ sender: Any) {
-         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "ns4:login",
+         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "ns4:getAccounts",
                                    soapparameters: ["arg0":"admin","arg1":"admin"], namespace: "").responseString { response in
             print("Request: \(String(describing: response.request))")   // original url request
                    print("Result: \(response.value)")
