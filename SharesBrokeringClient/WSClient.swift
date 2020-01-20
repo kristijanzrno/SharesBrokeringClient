@@ -52,7 +52,6 @@ class WSClient {
     func processCreateAccount(xml:XMLIndexer?)->Bool{
         if(xml != nil){
                    do{
-                    print(xml)
                        let result:Bool = try xml!["S:Envelope"]["S:Body"]["ns2:createAccountResponse"]["return"].value()
                        return result
                    }catch{
@@ -61,6 +60,23 @@ class WSClient {
                }
                return false
     }
+    
+    func getAllStocks(authUsername: String, authPassword: String, currency: String, handler:@escaping(XMLIndexer?)->Void){
+        sendRequest(method: "ns4:getAllStocks", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":currency], callback: handler)
+    }
+    
+    func processAllStocks(xml:XMLIndexer?)->[Stock]?{
+        if(xml != nil){
+                  do{
+                      let stocks: [Stock] = try xml!["S:Envelope"]["S:Body"]["ns2:getAllStocksResponse"]["return"].value()
+                      return stocks
+                  }catch{
+                      print("Could not parse stocks...")
+                  }
+              }
+              return nil
+    }
+    
     func sendRequest(method: String, parameters: Dictionary<String, String>, callback:@escaping(XMLIndexer?)->Void){
         var xml:XMLIndexer? = nil
         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: method,
