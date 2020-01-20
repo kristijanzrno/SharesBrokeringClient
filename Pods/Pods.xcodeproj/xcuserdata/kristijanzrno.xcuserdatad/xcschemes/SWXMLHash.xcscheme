@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8AE1FF9496A88FE4C1C3B213C9B531B5"
-               BuildableName = "SOAPEngine"
-               BlueprintName = "SOAPEngine"
+               BlueprintIdentifier = "63678F9A594800CBC7006B45EAB7886B"
+               BuildableName = "libSWXMLHash.a"
+               BlueprintName = "SWXMLHash"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -8,7 +8,6 @@
 
 #ifndef SOAPEngineBridgingHeader_h
 #define SOAPEngineBridgingHeader_h
-#import <SOAPEngine64/SOAPEngine.h>
 
 
 #endif /* SOAPEngineBridgingHeader_h */

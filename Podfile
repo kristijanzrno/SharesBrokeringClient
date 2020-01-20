@@ -6,7 +6,7 @@ target 'SharesBrokeringClient' do
   #use_frameworks!
 
   # Pods for SharesBrokeringClient
-	pod 'SOAPEngine'
+	pod 'SWXMLHash'
 	pod 'AlamofireSoap'
 
   target 'SharesBrokeringClientTests' do

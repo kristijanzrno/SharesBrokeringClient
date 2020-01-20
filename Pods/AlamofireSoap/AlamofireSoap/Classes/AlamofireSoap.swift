@@ -69,7 +69,6 @@ class SoapRequestManager {
         else {
             soapString = self.getNoParammethod()
         }
-        print(soapString)
         
         self.soapBody = soapString
         self.soapHeader["SOAPAction"] = "\(self.namespace)/\(self.methodName)"

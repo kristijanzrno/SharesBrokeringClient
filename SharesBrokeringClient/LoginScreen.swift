@@ -8,9 +8,10 @@
 
 import UIKit
 import AlamofireSoap
+import SWXMLHash
 
 class LoginScreen: UIViewController {
-
+    
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
@@ -19,14 +20,22 @@ class LoginScreen: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
+ 
+    
+    func loginHandler(xml: XMLIndexer?){
+        if(WSClient().processLogin(xml: xml)){
+            print("Successfully logged in...")
+        }else{
+            print("Could not log in...")
+        }
+      
+   }
+    
     @IBAction func login(_ sender: Any) {
-         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "ns4:getAccounts",
-                                   soapparameters: ["arg0":"admin","arg1":"admin"], namespace: "").responseString { response in
-            print("Request: \(String(describing: response.request))")   // original url request
-                   print("Result: \(response.value)")
-           }
-         }
-      /*AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: "login", soapparameters: ["arg0":"admin","arg1":"admin"], namespace: "http://tempuri.org")*/
+        WSClient().login(authUsername: usernameTF.text ?? "", authPassword: passwordTF.text ?? "", handler: loginHandler)
+    }
+    
+
     
 }

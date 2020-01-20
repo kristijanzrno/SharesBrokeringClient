@@ -39,7 +39,7 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>SOAPEngine.xcscheme</key>
+		<key>SWXMLHash.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
