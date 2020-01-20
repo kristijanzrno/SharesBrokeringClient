@@ -14,6 +14,7 @@ class LoginScreen: UIViewController {
     
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var statusTV: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,17 @@ class LoginScreen: UIViewController {
     
  
     
+    func accountHandler(xml: XMLIndexer?){
+        let accounts:[Account]? = WSClient().processAccounts(xml: xml)
+    }
+    
     func loginHandler(xml: XMLIndexer?){
         if(WSClient().processLogin(xml: xml)){
-            print("Successfully logged in...")
+            //go to the next screen
+            statusTV.text = ""
         }else{
             print("Could not log in...")
+            statusTV.text = "Could not log in..."
         }
       
    }
