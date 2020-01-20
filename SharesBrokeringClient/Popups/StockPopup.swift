@@ -24,11 +24,12 @@ class StockPopup: UIViewController, UITextFieldDelegate{
     var authUsername:String? = UserDefaults.standard.string(forKey: "username")
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
     var chosenStock:Stock? = nil
+    var presenter:MainScreen? = nil
     
     override func viewDidLoad() {
-             super.viewDidLoad()
+        super.viewDidLoad()
         self.buySharesTF.delegate = self
-       updateUI()
+        updateUI()
     }
     
     func updateUI(){
@@ -38,13 +39,15 @@ class StockPopup: UIViewController, UITextFieldDelegate{
         availableSharesTV.text = "Available: " + String(format:"%i", chosenStock!.noOfAvailableShares)
     }
     
-    func setChosenStock(stock:Stock?){
+    func setChosenStock(stock:Stock?, par:MainScreen){
+        presenter = par
         chosenStock = stock
     }
     
     func buySharesHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:buyStockResponse")){
-              self.presentingViewController!.view.makeToast("Successfully bought shares!")
+            self.presentingViewController!.view.makeToast("Successfully bought shares!")
+            presenter?.viewDidAppear(false)
             self.dismiss(animated: true, completion: nil)
         }else{
             self.view.makeToast("Could not buy shares...")
@@ -60,9 +63,9 @@ class StockPopup: UIViewController, UITextFieldDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
-         let val:Double = Double(buySharesTF.text!)!
+        let val:Double = Double(buySharesTF.text!)!
         buyValueTV.text = "Purchase value: " + chosenStock!.price!.currency + " - " + String(format:"%.2f", (val * (chosenStock?.price!.value)!))
     }
     
