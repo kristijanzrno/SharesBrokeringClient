@@ -58,7 +58,12 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
       }
       
       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          print(indexPath.row)
+            if let boughtSharePopup = storyboard?.instantiateViewController(identifier: "boughtSharePopup") as? BoughtSharePopup {
+                   // boughtSharePopup.setChosenStock(stock: boughtStocks[indexPath.row])
+                    boughtSharePopup.modalTransitionStyle = .crossDissolve
+                    boughtSharePopup.modalPresentationStyle = .overCurrentContext
+                    self.present(boughtSharePopup, animated: true, completion: nil)
+                }
       }
 
 }

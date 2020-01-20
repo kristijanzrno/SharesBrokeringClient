@@ -8,6 +8,7 @@ target 'SharesBrokeringClient' do
   # Pods for SharesBrokeringClient
 	pod 'SWXMLHash'
 	pod 'AlamofireSoap'
+	pod 'Toast-Swift'
 
   target 'SharesBrokeringClientTests' do
     inherit! :search_paths

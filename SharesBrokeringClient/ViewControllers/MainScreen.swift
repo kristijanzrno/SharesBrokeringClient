@@ -61,7 +61,14 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        if let stockPopup = storyboard?.instantiateViewController(identifier: "stockPopup") as? StockPopup {
+            stockPopup.setChosenStock(stock: stocks[indexPath.row])
+            stockPopup.modalTransitionStyle = .crossDissolve
+            stockPopup.modalPresentationStyle = .overCurrentContext
+            self.present(stockPopup, animated: true, completion: nil)
+        }
+
     }
     
     
