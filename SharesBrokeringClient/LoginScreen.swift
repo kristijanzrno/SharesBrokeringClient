@@ -18,30 +18,25 @@ class LoginScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     
- 
     
-    func accountHandler(xml: XMLIndexer?){
-        let accounts:[Account]? = WSClient().processAccounts(xml: xml)
-    }
     
     func loginHandler(xml: XMLIndexer?){
-        if(WSClient().processLogin(xml: xml)){
+        if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:loginResponse")){
             //go to the next screen
             statusTV.text = ""
             if let tabViewController = storyboard?.instantiateViewController(identifier: "tabbedVC") as? TabbedViewController {
                 tabViewController.modalPresentationStyle = .fullScreen
                 self.present(tabViewController, animated: true, completion: nil)
             }
+            
         }else{
-            print("Could not log in...")
             statusTV.text = "Could not log in..."
         }
-      
-   }
+        
+    }
     
     @IBAction func login(_ sender: Any) {
         UserDefaults.standard.set(usernameTF.text ?? "", forKey: "username")
@@ -49,6 +44,6 @@ class LoginScreen: UIViewController {
         WSClient().login(authUsername: usernameTF.text ?? "", authPassword: passwordTF.text ?? "", handler: loginHandler)
     }
     
-
+    
     
 }
