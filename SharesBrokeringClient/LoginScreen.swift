@@ -19,6 +19,9 @@ class LoginScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if(UserDefaults.standard.bool(forKey: "loggedIn")){
+            WSClient().login(authUsername: UserDefaults.standard.string(forKey: "username") ?? "", authPassword: UserDefaults.standard.string(forKey: "password") ?? "", handler: loginHandler)
+        }
     }
     
     
@@ -27,6 +30,7 @@ class LoginScreen: UIViewController {
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:loginResponse")){
             //go to the next screen
             statusTV.text = ""
+            UserDefaults.standard.set(true, forKey: "loggedIn")
             if let tabViewController = storyboard?.instantiateViewController(identifier: "tabbedVC") as? TabbedViewController {
                 tabViewController.modalPresentationStyle = .fullScreen
                 self.present(tabViewController, animated: true, completion: nil)

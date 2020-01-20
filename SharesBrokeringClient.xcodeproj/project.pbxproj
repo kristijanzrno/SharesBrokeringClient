@@ -144,15 +144,15 @@
 				6E48D84723D4DE5E00A22720 /* MainScreen.swift */,
 				6E48D84923D4DE5E00A22720 /* AccountSharesScreen.swift */,
 				6E48D87923D4E2B800A22720 /* AccountSettingsScreen.swift */,
-				6E48D84B23D4DE5E00A22720 /* Main.storyboard */,
-				6E48D84E23D4DE6000A22720 /* Assets.xcassets */,
-				6E48D85023D4DE6000A22720 /* LaunchScreen.storyboard */,
-				6E48D85323D4DE6000A22720 /* Info.plist */,
 				6E495BD523D51668005B5071 /* WSClient.swift */,
 				6E547DB723D5CB7C00836C1A /* Account.swift */,
 				6E547DB923D5CBB300836C1A /* BoughtStock.swift */,
 				6E547DBF23D5FC8900836C1A /* Stock.swift */,
 				6E547DC123D5FC9200836C1A /* Price.swift */,
+				6E48D84B23D4DE5E00A22720 /* Main.storyboard */,
+				6E48D84E23D4DE6000A22720 /* Assets.xcassets */,
+				6E48D85023D4DE6000A22720 /* LaunchScreen.storyboard */,
+				6E48D85323D4DE6000A22720 /* Info.plist */,
 			);
 			path = SharesBrokeringClient;
 			sourceTree = "<group>";

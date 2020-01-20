@@ -11,7 +11,7 @@ import SWXMLHash
 
 class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    var currency:String = "USD"
+    var currency:String = UserDefaults.standard.string(forKey: "currency") ?? "USD"
     var authUsername:String? = UserDefaults.standard.string(forKey: "username")
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
     var stocks:[Stock] = []
@@ -23,7 +23,6 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        fetchData()
     }
     
 
@@ -36,8 +35,18 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        reloadUserData()
+        fetchData()
+    }
+    
     func fetchData(){
-        WSClient().getAllStocks(authUsername: authUsername ?? "", authPassword: authPassword ?? "", currency: "USD" ?? "", handler: fetchDataHandler)
+        WSClient().getAllStocks(authUsername: authUsername ?? "", authPassword: authPassword ?? "", currency: currency, handler: fetchDataHandler)
+    }
+    func reloadUserData(){
+        currency = UserDefaults.standard.string(forKey: "currency") ?? "USD"
+        authUsername = UserDefaults.standard.string(forKey: "username")
+        authPassword = UserDefaults.standard.string(forKey: "password")
     }
     
     

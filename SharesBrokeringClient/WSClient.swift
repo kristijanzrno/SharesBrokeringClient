@@ -132,14 +132,14 @@ class WSClient {
         sendRequest(method: "ns4:changeAccountAccess", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":accountName, "arg3":blocked], callback: handler)
     }
     
-    
-    //
-    
+        
     //Processing getting account currency list
     
-    func changeAccountAccess(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
+    func getCurrencyList(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:getCurrencyList", parameters: ["arg0":authUsername,"arg1":authPassword], callback: handler)
     }
+    
+    
     
     func processCurrencyList(xml: XMLIndexer?) ->[String]?{
         if(xml != nil){
