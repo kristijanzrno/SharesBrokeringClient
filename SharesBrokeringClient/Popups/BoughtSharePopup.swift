@@ -72,8 +72,12 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let val:Double = Double(numberToSellTF.text!)!
+        var val:Double = 0.0
+        if textField.text != ""{
+        val = Double(numberToSellTF.text!)!
+        }
         toSellValueTV.text = "Sell value: " + stockInfo!.price!.currency + " - " + String(format:"%.2f", (val * (stockInfo?.price!.value)!))
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

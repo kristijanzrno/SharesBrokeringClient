@@ -65,7 +65,10 @@ class StockPopup: UIViewController, UITextFieldDelegate{
     
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let val:Double = Double(buySharesTF.text!)!
+        var val:Double = 0.0
+        if textField.text != ""{
+            val = Double(buySharesTF.text!)!
+        }
         buyValueTV.text = "Purchase value: (" + chosenStock!.price!.currency + ") " + String(format:"%.2f", (val * (chosenStock?.price!.value)!))
     }
     
