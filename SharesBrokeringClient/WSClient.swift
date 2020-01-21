@@ -75,6 +75,23 @@ class WSClient {
         return nil
     }
     
+    // Processing search functionality
+    
+    func searchStocks(authUsername: String, authPassword: String, searchFor:String, orderBy:String, currency: String, handler:@escaping(XMLIndexer?)->Void){
+        sendRequest(method: "ns4:searchStocks", parameters: ["arg0":authUsername,"arg1":authPassword,"arg2":searchFor,"arg3":orderBy, "arg4":currency], callback: handler)
+    }
+    func processSearchStocks(xml:XMLIndexer?)->[Stock]?{
+        if(xml != nil){
+                   do{
+                       let stocks: [Stock] = try xml!["S:Envelope"]["S:Body"]["ns2:searchStocksResponse"]["return"].value()
+                       return stocks
+                   }catch{
+                       print("Could not parse stocks...")
+                   }
+               }
+               return nil
+    }
+    
     // Processing get stock requests
     
     func getStock(authUsername: String, authPassword: String, companySymbol:String, currency: String, handler:@escaping(XMLIndexer?)->Void){

@@ -33,7 +33,12 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
 
     func fetchDataHandler(xml: XMLIndexer?){
-        let fetchedStocks = WSClient().processAllStocks(xml: xml)
+        var fetchedStocks:[Stock]? = nil
+        if(searchTF.text == "" && searchCriteria == "name-asc"){
+            fetchedStocks = WSClient().processAllStocks(xml: xml)
+        }else{
+            fetchedStocks = WSClient().processSearchStocks(xml: xml)
+        }
         if(fetchedStocks != nil){
             stocks.removeAll()
             stocks.append(contentsOf: fetchedStocks!)
@@ -44,10 +49,15 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     override func viewDidAppear(_ animated: Bool) {
         reloadUserData()
         fetchData()
+        criteriaButton.setTitle(searchCriteriaName, for: .normal)
     }
     
     func fetchData(){
-        WSClient().getAllStocks(authUsername: authUsername ?? "", authPassword: authPassword ?? "", currency: currency, handler: fetchDataHandler)
+        if(searchTF.text == "" && searchCriteria == "name-asc"){
+            WSClient().getAllStocks(authUsername: authUsername ?? "", authPassword: authPassword ?? "", currency: currency, handler: fetchDataHandler)
+        }else{
+            WSClient().searchStocks(authUsername: authUsername!, authPassword: authPassword!, searchFor: searchTF.text!, orderBy: searchCriteria, currency: currency, handler: fetchDataHandler)
+        }
     }
     func reloadUserData(){
         currency = UserDefaults.standard.string(forKey: "currency") ?? "USD"
@@ -63,7 +73,7 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     func setSearchCriteria(criteria:String, criteriaName:String){
         self.searchCriteria = criteria
         self.searchCriteriaName = criteriaName
-        criteriaButton.titleLabel?.text = criteriaName
+        criteriaButton.setTitle(searchCriteriaName, for: .normal)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +94,7 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     }
     
     @IBAction func search(_ sender: Any) {
+        fetchData()
     }
     
 
