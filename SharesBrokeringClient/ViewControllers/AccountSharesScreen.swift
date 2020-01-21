@@ -15,11 +15,13 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
     var boughtStocks:[BoughtStock] = []
     
+    var accountBalance:Double = 0.0
+    
+    @IBOutlet weak var accountBalanceTV: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -35,6 +37,24 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
             boughtStocks.removeAll()
             boughtStocks.append(contentsOf: fetchedStocks!)
             self.tableView.reloadData()
+        }
+        accountBalance = 0.0
+        for boughtShare in boughtStocks{
+            WSClient().getStock(authUsername: authUsername!, authPassword: authPassword!, companySymbol: boughtShare.companySymbol, currency: currency, handler: getStockInfo)
+        }
+        
+    }
+    
+    func getStockInfo(xml: XMLIndexer?){
+        let info = WSClient().processGetStock(xml: xml)
+        if(info != nil){
+            for boughtShare in boughtStocks{
+                if boughtShare.companyName == info?.companyName{
+                    accountBalance = accountBalance + (Double(boughtShare.noOfBoughtShares) * (info?.price!.value)!)
+                    accountBalanceTV.text = "Account Balance: " + currency + String(format:"%.2f", accountBalance)
+                    break
+                }
+            }
         }
     }
     
@@ -53,8 +73,10 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel!.text = boughtStocks[indexPath.row].companySymbol
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "myShareCell")! as! MyShareCell
+        cell.stockTitle.text = boughtStocks[indexPath.row].companyName
+        cell.stockSymbol.text = boughtStocks[indexPath.row].companySymbol
+        cell.boughtShares.text = String(format:"%i", boughtStocks[indexPath.row].noOfBoughtShares) + " Shares"
         return cell
     }
     

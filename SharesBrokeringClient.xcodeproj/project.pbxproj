@@ -35,6 +35,7 @@
 		6E547DC223D5FC9200836C1A /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E547DC123D5FC9200836C1A /* Price.swift */; };
 		6EB8082E23D74F50009C3ECA /* CriteriaPickerPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB8082D23D74F50009C3ECA /* CriteriaPickerPopup.swift */; };
 		6EB8083123D78772009C3ECA /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB8083023D78772009C3ECA /* StockCell.swift */; };
+		6EB8083523D79795009C3ECA /* MyShareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB8083423D79795009C3ECA /* MyShareCell.swift */; };
 		C4A3A863DA337B9802E2A507 /* libPods-SharesBrokeringClientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAFE16F8AF1519068AC7F22 /* libPods-SharesBrokeringClientTests.a */; };
 		F1DB6EAD7B5C01127F9F09C0 /* libPods-SharesBrokeringClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1D9CF3D281F75AF38386D9 /* libPods-SharesBrokeringClient.a */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		6E547DC123D5FC9200836C1A /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		6EB8082D23D74F50009C3ECA /* CriteriaPickerPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriteriaPickerPopup.swift; sourceTree = "<group>"; };
 		6EB8083023D78772009C3ECA /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
+		6EB8083423D79795009C3ECA /* MyShareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShareCell.swift; sourceTree = "<group>"; };
 		7F3C7804174694555D0B6C03 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient-SharesBrokeringClientUITests/Pods-SharesBrokeringClient-SharesBrokeringClientUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A37A838838EBA0994B9D9E65 /* Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClient-SharesBrokeringClientUITests/Pods-SharesBrokeringClient-SharesBrokeringClientUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B96C7F97ECA08DC425FA3F8B /* Pods-SharesBrokeringClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharesBrokeringClientTests.release.xcconfig"; path = "Target Support Files/Pods-SharesBrokeringClientTests/Pods-SharesBrokeringClientTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				6EB8083023D78772009C3ECA /* StockCell.swift */,
+				6EB8083423D79795009C3ECA /* MyShareCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				6E547DBE23D5E2C000836C1A /* CreateAccountScreen.swift in Sources */,
 				6E547DB823D5CB7C00836C1A /* Account.swift in Sources */,
 				6E2DDC5723D6293500FF10DA /* StockPopup.swift in Sources */,
+				6EB8083523D79795009C3ECA /* MyShareCell.swift in Sources */,
 				6E48D84423D4DE5E00A22720 /* AppDelegate.swift in Sources */,
 				6E53DDED23D6830A00CC222C /* EditAccountPopup.swift in Sources */,
 				6E48D84623D4DE5E00A22720 /* SceneDelegate.swift in Sources */,
