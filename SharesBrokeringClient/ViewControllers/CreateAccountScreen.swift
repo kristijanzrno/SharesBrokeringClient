@@ -20,7 +20,6 @@ class CreateAccountScreen:UIViewController{
      
     func createAccountHandler(xml: XMLIndexer?){
          if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:createAccountResponse")){
-             //go to the next screen
              statusTV.text = ""
             self.dismiss(animated: true, completion: nil)
          }else{

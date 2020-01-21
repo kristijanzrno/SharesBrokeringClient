@@ -11,12 +11,18 @@ import SWXMLHash
 
 class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
+    var stocks:[Stock] = []
+    var searchCriteria:String = "name-asc"
+    var searchCriteriaName:String = "Name - Ascending"
+    
     var currency:String = UserDefaults.standard.string(forKey: "currency") ?? "USD"
     var authUsername:String? = UserDefaults.standard.string(forKey: "username")
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
-    var stocks:[Stock] = []
     
+    @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var criteriaButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,6 +60,12 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
         return stocks.count
     }
     
+    func setSearchCriteria(criteria:String, criteriaName:String){
+        self.searchCriteria = criteria
+        self.searchCriteriaName = criteriaName
+        criteriaButton.titleLabel?.text = criteriaName
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel!.text = stocks[indexPath.row].companySymbol
@@ -71,7 +83,19 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     }
     
+    @IBAction func search(_ sender: Any) {
+    }
     
 
+    @IBAction func changeCriteria(_ sender: Any) {
+        if let criteriaPickerPopup = storyboard?.instantiateViewController(identifier: "criteriaPickerPopup") as? CriteriaPickerPopup {
+                   criteriaPickerPopup.presenter = self
+                   criteriaPickerPopup.previouslySelected = searchCriteria
+                   criteriaPickerPopup.modalTransitionStyle = .crossDissolve
+                   criteriaPickerPopup.modalPresentationStyle = .overCurrentContext
+            self.present(criteriaPickerPopup, animated: true, completion: nil)
+                   
+               }
+    }
 }
 
