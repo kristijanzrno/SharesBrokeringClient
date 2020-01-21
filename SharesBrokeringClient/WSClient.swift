@@ -16,6 +16,11 @@ class WSClient {
         sendRequest(method: "ns4:login", parameters: ["arg0":authUsername,"arg1":authPassword], callback: handler)
     }
     
+    // Processing Login requests
+    func getIsAdmin(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
+        sendRequest(method: "ns4:isAdmin", parameters: ["arg0":authUsername,"arg1":authPassword], callback: handler)
+    }
+    
     func getBoolResponse(xml:XMLIndexer?, methodName:String)->Bool{
         if(xml != nil){
             do{
@@ -132,7 +137,7 @@ class WSClient {
         sendRequest(method: "ns4:changeAccountAccess", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":accountName, "arg3":blocked], callback: handler)
     }
     
-        
+    
     //Processing getting account currency list
     
     func getCurrencyList(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
@@ -154,10 +159,10 @@ class WSClient {
     }
     
     // Change account password
-           func changeAccountPassword(authUsername: String, authPassword: String,
-                                newPassword: String, handler:@escaping(XMLIndexer?)->Void){
-           sendRequest(method: "ns4:changeAccountPassword", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":newPassword], callback: handler)
-       }
+    func changeAccountPassword(authUsername: String, authPassword: String,
+                               newPassword: String, handler:@escaping(XMLIndexer?)->Void){
+        sendRequest(method: "ns4:changeAccountPassword", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":newPassword], callback: handler)
+    }
     
     
     // Sending Requests
@@ -166,8 +171,12 @@ class WSClient {
         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: method,
                                   soapparameters: parameters, namespace: "").responseString { response in
                                     //successful request
-                                    xml = SWXMLHash.parse(response.value!)
-                                    callback(xml)
+                                    if let xmlString = response.value{
+                                        xml = SWXMLHash.parse(xmlString)
+                                        callback(xml)
+                                    }else{
+                                        print("Error connecting to the server...")
+                                    }
                                     
         }
         

@@ -64,7 +64,16 @@ class EditAccountPopup: UIViewController{
     }
     
     @IBAction func deleteAccount(_ sender: Any) {
-        WSClient().deleteAccount(authUsername: authUsername!, authPassword: authPassword!, accountName: account!.accountName, handler: deleteAccountHandler)
+        let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
+            WSClient().deleteAccount(authUsername: self.authUsername!, authPassword: self.authPassword!, accountName: self.account!.accountName, handler: self.deleteAccountHandler)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (UIAlertAction) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: Any) {

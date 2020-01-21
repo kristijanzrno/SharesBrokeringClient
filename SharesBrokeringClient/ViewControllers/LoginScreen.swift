@@ -33,6 +33,7 @@ class LoginScreen: UIViewController {
             UserDefaults.standard.set(true, forKey: "loggedIn")
             if let tabViewController = storyboard?.instantiateViewController(identifier: "tabbedVC") as? TabbedViewController {
                 tabViewController.modalPresentationStyle = .fullScreen
+                passwordTF.text = ""
                 self.present(tabViewController, animated: true, completion: nil)
             }
             

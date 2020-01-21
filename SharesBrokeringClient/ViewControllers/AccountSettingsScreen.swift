@@ -16,6 +16,7 @@ class AccountSettingsScreen: UIViewController, UIPickerViewDelegate, UIPickerVie
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var currencyPicker: UIPickerView!
+    @IBOutlet weak var adminButton: UIButton!
     
     
     var currencyList:[String] = []
@@ -32,6 +33,7 @@ class AccountSettingsScreen: UIViewController, UIPickerViewDelegate, UIPickerVie
         reloadUserData()
         fetchData()
         usernameTF.text = authUsername
+        
     }
     
     func fetchDataHandler(xml: XMLIndexer?){
@@ -49,8 +51,17 @@ class AccountSettingsScreen: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
     
+    func isAdminHandler(xml: XMLIndexer?){
+        if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:isAdminResponse")){
+            adminButton.isHidden = false
+        }else{
+            adminButton.isHidden = true
+        }
+    }
+    
     func fetchData(){
         WSClient().getCurrencyList(authUsername: authUsername ?? "", authPassword: authPassword ?? "", handler: fetchDataHandler)
+        WSClient().getIsAdmin(authUsername: authUsername!, authPassword: authPassword!, handler: isAdminHandler)
     }
     
     func reloadUserData(){
@@ -69,6 +80,7 @@ class AccountSettingsScreen: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func logout(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "loggedIn")
         UserDefaults.standard.set("USD", forKey: "currency")
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func adminUtilities(_ sender: Any) {

@@ -11,7 +11,7 @@ import SWXMLHash
 import Toast_Swift
 
 class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+    
     var currency:String = UserDefaults.standard.string(forKey: "currency") ?? "USD"
     var authUsername:String? = UserDefaults.standard.string(forKey: "username")
     var authPassword:String? = UserDefaults.standard.string(forKey: "password")
@@ -27,7 +27,7 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
         self.tableView.delegate = self
     }
     
-
+    
     func fetchDataHandler(xml: XMLIndexer?){
         let fetchedStocks = WSClient().processAllStocks(xml: xml)
         if(fetchedStocks != nil){
@@ -63,10 +63,17 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let editStockPopup = storyboard?.instantiateViewController(identifier: "editStockPopup") as? EditStockPopup {
+            editStockPopup.chosenStock = stocks[indexPath.row]
+            editStockPopup.presenter = self
+            editStockPopup.modalTransitionStyle = .crossDissolve
+            editStockPopup.modalPresentationStyle = .overCurrentContext
+            self.present(editStockPopup, animated: true, completion: nil)
         }
-
     }
     
-    
+}
+
+
 
 
