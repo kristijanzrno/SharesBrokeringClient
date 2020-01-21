@@ -51,7 +51,6 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
               self.presentingViewController!.view.makeToast("Successfully sold shares!")
             presenter?.viewDidAppear(false)
             
-
             self.dismiss(animated: true, completion: nil)
         }else{
             self.view.makeToast("Could not sell shares...")

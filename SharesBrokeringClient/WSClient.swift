@@ -153,6 +153,11 @@ class WSClient {
         return nil
     }
     
+    // Change account password
+           func changeAccountPassword(authUsername: String, authPassword: String,
+                                newPassword: String, handler:@escaping(XMLIndexer?)->Void){
+           sendRequest(method: "ns4:changeAccountPassword", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":newPassword], callback: handler)
+       }
     
     
     // Sending Requests

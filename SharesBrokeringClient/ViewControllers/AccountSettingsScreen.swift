@@ -60,6 +60,9 @@ class AccountSettingsScreen: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     @IBAction func changePassword(_ sender: Any) {
+        if let changePasswordPopup = storyboard?.instantiateViewController(identifier: "changePasswordPopup") as? ChangePasswordPopup{
+            self.present(changePasswordPopup, animated: true, completion: nil)
+        }
         
     }
     
