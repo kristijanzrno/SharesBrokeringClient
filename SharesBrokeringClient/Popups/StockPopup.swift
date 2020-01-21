@@ -33,9 +33,9 @@ class StockPopup: UIViewController, UITextFieldDelegate{
     }
     
     func updateUI(){
-        companyNameTV.text = chosenStock!.companyName + " - " + chosenStock!.companySymbol
-        valueTV.text = "Value: " + (chosenStock?.price!.currency)! + " - " + String(format:"%.2f", (chosenStock?.price!.value)!)
-        lastUpdatedTV.text = "Last Updated: " + ((chosenStock?.price?.lastUpdated)?!.dropLast())!
+        companyNameTV.text = chosenStock!.companyName + " (" + chosenStock!.companySymbol + ")"
+        valueTV.text = "Value: (" + (chosenStock?.price!.currency)! + ") " + String(format:"%.2f", (chosenStock?.price!.value)!)
+        lastUpdatedTV.text = "Updated: " + ((chosenStock?.price?.lastUpdated)?!.dropLast())!
         availableSharesTV.text = "Available: " + String(format:"%i", chosenStock!.noOfAvailableShares)
     }
     
@@ -66,7 +66,7 @@ class StockPopup: UIViewController, UITextFieldDelegate{
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let val:Double = Double(buySharesTF.text!)!
-        buyValueTV.text = "Purchase value: " + chosenStock!.price!.currency + " - " + String(format:"%.2f", (val * (chosenStock?.price!.value)!))
+        buyValueTV.text = "Purchase value: (" + chosenStock!.price!.currency + ") " + String(format:"%.2f", (val * (chosenStock?.price!.value)!))
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
