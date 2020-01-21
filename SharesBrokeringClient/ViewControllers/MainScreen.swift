@@ -26,7 +26,7 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //self.tableView.register(StockCell.self, forCellReuseIdentifier: "stockCell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -77,8 +77,10 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel!.text = stocks[indexPath.row].companySymbol
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "stockCell")! as! StockCell
+        cell.stockTitle!.text = stocks[indexPath.row].companyName
+        cell.stockSymbol!.text = stocks[indexPath.row].companySymbol
+        cell.stockPrice!.text = stocks[indexPath.row].price!.currency + String(format:"%.2f", stocks[indexPath.row].price!.value)
         return cell
     }
     

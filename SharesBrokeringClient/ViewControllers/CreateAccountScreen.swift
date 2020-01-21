@@ -23,7 +23,7 @@ class CreateAccountScreen:UIViewController{
              statusTV.text = ""
             self.dismiss(animated: true, completion: nil)
          }else{
-             statusTV.text = "Could not create account, please try again..."
+             statusTV.text = "Please try again..."
          }
        
     }
