@@ -63,7 +63,6 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         }
 
     }

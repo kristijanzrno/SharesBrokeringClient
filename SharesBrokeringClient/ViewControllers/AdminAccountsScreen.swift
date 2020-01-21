@@ -52,6 +52,12 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //todo
+        if let editAccountPopup = storyboard?.instantiateViewController(identifier: "editAccountPopup") as? EditAccountPopup {
+            editAccountPopup.account = accounts[indexPath.row]
+            editAccountPopup.presenter = self
+                  editAccountPopup.modalTransitionStyle = .crossDissolve
+                  editAccountPopup.modalPresentationStyle = .overCurrentContext
+                  self.present(editAccountPopup, animated: true, completion: nil)
+              }
     }
 }
