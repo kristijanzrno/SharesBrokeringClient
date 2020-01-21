@@ -85,6 +85,7 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
             boughtSharePopup.setChosenStock(stock: boughtStocks[indexPath.row], par: self)
             boughtSharePopup.modalTransitionStyle = .crossDissolve
             boughtSharePopup.modalPresentationStyle = .overFullScreen
+            tableView.deselectRow(at: indexPath, animated: true)
             self.present(boughtSharePopup, animated: true, completion: nil)
         }
     }

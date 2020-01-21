@@ -13,6 +13,7 @@ class CriteriaPickerPopup: UIViewController, UIPickerViewDelegate, UIPickerViewD
     let options:[String] = ["Name - Ascending", "Name - Descending", "Price - Low to High", "Price - High to Low", "Available Shares - Low to High", "Available Shares - High to Low"]
     let xmlOptions:[String] = ["name-asc", "name-desc", "price-lth", "price-htl", "available-shares-lth","available-shares-htl"]
     var presenter:MainScreen? = nil
+    var adminPresenter:AdminStocksScreen? = nil
     var previouslySelected:String = "name-asc"
 
     var selected:String = ""
@@ -46,7 +47,11 @@ class CriteriaPickerPopup: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func pickCriteria(_ sender: Any) {
-        presenter?.setSearchCriteria(criteria: selected, criteriaName:selectedName)
+        if presenter == nil{
+            adminPresenter?.setSearchCriteria(criteria: selected, criteriaName:selectedName)
+        }else{
+            presenter?.setSearchCriteria(criteria: selected, criteriaName:selectedName)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     

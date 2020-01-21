@@ -20,7 +20,6 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -46,8 +45,9 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel!.text = accounts[indexPath.row].accountName
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "accountCell")! as! AccountCell
+        cell.accountTitle.text = accounts[indexPath.row].accountName
+        cell.accountBlocked.text = "Blocked: " + accounts[indexPath.row].accountBlocked.description
         return cell
     }
     
@@ -57,6 +57,7 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
             editAccountPopup.presenter = self
             editAccountPopup.modalTransitionStyle = .crossDissolve
             editAccountPopup.modalPresentationStyle = .overCurrentContext
+            tableView.deselectRow(at: indexPath, animated: true)
             self.present(editAccountPopup, animated: true, completion: nil)
         }
     }

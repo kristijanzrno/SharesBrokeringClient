@@ -65,15 +65,31 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
         authPassword = UserDefaults.standard.string(forKey: "password")
     }
     
+    @IBAction func search(_ sender: Any) {
+          fetchData()
+      }
+      
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocks.count
-    }
+
     
     func setSearchCriteria(criteria:String, criteriaName:String){
         self.searchCriteria = criteria
         self.searchCriteriaName = criteriaName
         criteriaButton.setTitle(searchCriteriaName, for: .normal)
+    }
+    @IBAction func changeCriteria(_ sender: Any) {
+         if let criteriaPickerPopup = storyboard?.instantiateViewController(identifier: "criteriaPickerPopup") as? CriteriaPickerPopup {
+                    criteriaPickerPopup.presenter = self
+                    criteriaPickerPopup.previouslySelected = searchCriteria
+                    criteriaPickerPopup.modalTransitionStyle = .crossDissolve
+                    criteriaPickerPopup.modalPresentationStyle = .overCurrentContext
+             self.present(criteriaPickerPopup, animated: true, completion: nil)
+                    
+                }
+     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,25 +106,14 @@ class MainScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
             stockPopup.setChosenStock(stock: stocks[indexPath.row], par:self)
             stockPopup.modalTransitionStyle = .crossDissolve
             stockPopup.modalPresentationStyle = .overCurrentContext
+            tableView.deselectRow(at: indexPath, animated: true)
             self.present(stockPopup, animated: true, completion: nil)
         }
 
     }
     
-    @IBAction func search(_ sender: Any) {
-        fetchData()
-    }
-    
+  
 
-    @IBAction func changeCriteria(_ sender: Any) {
-        if let criteriaPickerPopup = storyboard?.instantiateViewController(identifier: "criteriaPickerPopup") as? CriteriaPickerPopup {
-                   criteriaPickerPopup.presenter = self
-                   criteriaPickerPopup.previouslySelected = searchCriteria
-                   criteriaPickerPopup.modalTransitionStyle = .crossDissolve
-                   criteriaPickerPopup.modalPresentationStyle = .overCurrentContext
-            self.present(criteriaPickerPopup, animated: true, completion: nil)
-                   
-               }
-    }
+ 
 }
 
