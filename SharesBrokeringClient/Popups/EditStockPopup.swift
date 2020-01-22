@@ -38,7 +38,7 @@ class EditStockPopup: UIViewController{
         availableSharesTV.text = "Available: " + String(format:"%i", chosenStock!.noOfAvailableShares)
         blockedTV.text = "Blocked: " + (chosenStock?.blocked.description)!
         if chosenStock!.blocked{
-            blockButton.titleLabel?.text = "Unblock"
+            blockButton.setTitle("Unblock", for: .normal)
         }
     }
     

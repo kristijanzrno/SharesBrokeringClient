@@ -34,7 +34,7 @@ class EditAccountPopup: UIViewController{
         blockedTV.text = "Blocked: " + (account?.accountBlocked.description)!
         
         if(account!.accountBlocked){
-            blockButton.titleLabel?.text = "Unblock"
+            blockButton.setTitle("Unblock", for: .normal)
         }
     }
     
