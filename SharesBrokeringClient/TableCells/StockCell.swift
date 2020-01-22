@@ -8,10 +8,10 @@
 
 import UIKit
 
+// Class created for a custom Stock cell
+
 class StockCell: UITableViewCell {
     @IBOutlet weak var stockTitle: UILabel!
     @IBOutlet weak var stockSymbol: UILabel!
     @IBOutlet weak var stockPrice: UILabel!
-    
-
 }

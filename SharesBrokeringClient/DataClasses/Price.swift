@@ -8,6 +8,9 @@
 
 import SWXMLHash
 
+// Struct object to resemble SOAP service Price object
+// XML mapped to the object using SWXMLHash library
+
 struct Price: XMLIndexerDeserializable{
     let currency:String
     let value:Double

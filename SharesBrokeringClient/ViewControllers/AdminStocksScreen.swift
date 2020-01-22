@@ -11,7 +11,7 @@ import SWXMLHash
 import Toast_Swift
 
 class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+    
     
     
     var currency:String = UserDefaults.standard.string(forKey: "currency") ?? "USD"
@@ -34,7 +34,7 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
         self.tableView.delegate = self
     }
     
-    
+    // Processing the fetched data
     func fetchDataHandler(xml: XMLIndexer?){
         var fetchedStocks:[Stock]? = nil
         if(searchTF.text == "" && searchCriteria == "name-asc"){
@@ -49,6 +49,7 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
+    // Fetching the data each time the view re-appears
     override func viewDidAppear(_ animated: Bool) {
         reloadUserData()
         fetchData()
@@ -56,6 +57,7 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
     
+    // Sending the search/getAllStocks request
     func fetchData(){
         if(searchTF.text == "" && searchCriteria == "name-asc"){
             WSClient().getAllStocks(authUsername: authUsername ?? "", authPassword: authPassword ?? "", currency: currency, handler: fetchDataHandler)
@@ -63,6 +65,8 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
             WSClient().searchStocks(authUsername: authUsername!, authPassword: authPassword!, searchFor: searchTF.text!, orderBy: searchCriteria, currency: currency, handler: fetchDataHandler)
         }
     }
+    
+    // Reloading the data when the view reappears
     func reloadUserData(){
         currency = UserDefaults.standard.string(forKey: "currency") ?? "USD"
         authUsername = UserDefaults.standard.string(forKey: "username")
@@ -70,31 +74,34 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @IBAction func search(_ sender: Any) {
-          fetchData()
-      }
+        fetchData()
+    }
     
+    // Changing the criteria with a picker in a popup
     @IBAction func changeCriteria(_ sender: Any) {
         if let criteriaPickerPopup = storyboard?.instantiateViewController(identifier: "criteriaPickerPopup") as? CriteriaPickerPopup {
-                         criteriaPickerPopup.adminPresenter = self
-                         criteriaPickerPopup.previouslySelected = searchCriteria
-                         criteriaPickerPopup.modalTransitionStyle = .crossDissolve
-                         criteriaPickerPopup.modalPresentationStyle = .overCurrentContext
-                  self.present(criteriaPickerPopup, animated: true, completion: nil)
-                         
-    }
+            criteriaPickerPopup.adminPresenter = self
+            criteriaPickerPopup.previouslySelected = searchCriteria
+            criteriaPickerPopup.modalTransitionStyle = .crossDissolve
+            criteriaPickerPopup.modalPresentationStyle = .overCurrentContext
+            self.present(criteriaPickerPopup, animated: true, completion: nil)
+            
+        }
     }
     
-        func setSearchCriteria(criteria:String, criteriaName:String){
-               self.searchCriteria = criteria
-               self.searchCriteriaName = criteriaName
-               criteriaButton.setTitle(searchCriteriaName, for: .normal)
-           }
-        
+    // Changing the search criteria from the order by popup
+    func setSearchCriteria(criteria:String, criteriaName:String){
+        self.searchCriteria = criteria
+        self.searchCriteriaName = criteriaName
+        criteriaButton.setTitle(searchCriteriaName, for: .normal)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Making a custom cell and populating it
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "stockCell")! as! StockCell
         cell.stockTitle!.text = stocks[indexPath.row].companyName
         cell.stockSymbol!.text = stocks[indexPath.row].companySymbol
@@ -104,6 +111,7 @@ class AdminStocksScreen: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let editStockPopup = storyboard?.instantiateViewController(identifier: "editStockPopup") as? EditStockPopup {
+            // Popping up the edit-stock window
             editStockPopup.chosenStock = stocks[indexPath.row]
             editStockPopup.presenter = self
             editStockPopup.modalTransitionStyle = .crossDissolve

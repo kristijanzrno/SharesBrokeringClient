@@ -8,6 +8,9 @@
 
 import SWXMLHash
 
+// Struct object to resemble SOAP service account object
+// XML mapped to the object using SWXMLHash library
+
 struct Account: XMLIndexerDeserializable{
     let accountName:String
     let accountPassword:String

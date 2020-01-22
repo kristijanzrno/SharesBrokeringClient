@@ -31,6 +31,8 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
         reloadUserData()
         fetchData()
     }
+    
+    // Processing the fetched data
     func fetchDataHandler(xml: XMLIndexer?){
         let fetchedStocks = WSClient().processAllAccountShares(xml: xml)
         if(fetchedStocks != nil){
@@ -45,6 +47,8 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
         
     }
     
+    // Getting the stock info for every stock owned by the account
+    // To find out the total balance of the account
     func getStockInfo(xml: XMLIndexer?){
         let info = WSClient().processGetStock(xml: xml)
         if(info != nil){
@@ -58,10 +62,12 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    // Fetching the all account shares
     func fetchData(){
         WSClient().getAllAccountShares(authUsername: authUsername ?? "", authPassword: authPassword ?? "", handler: fetchDataHandler)
     }
     
+    // Reloading the user data
     func reloadUserData(){
         currency = UserDefaults.standard.string(forKey: "currency") ?? "USD"
         authUsername = UserDefaults.standard.string(forKey: "username")
@@ -73,6 +79,7 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Setting the custom tableview cell
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "myShareCell")! as! MyShareCell
         cell.stockTitle.text = boughtStocks[indexPath.row].companyName
         cell.stockSymbol.text = boughtStocks[indexPath.row].companySymbol
@@ -82,6 +89,7 @@ class AccountSharesScreen: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let boughtSharePopup = storyboard?.instantiateViewController(identifier: "boughtSharePopup") as? BoughtSharePopup {
+            // Invoking the share info popup when its clicked
             boughtSharePopup.setChosenStock(stock: boughtStocks[indexPath.row], par: self)
             boughtSharePopup.modalTransitionStyle = .crossDissolve
             boughtSharePopup.modalPresentationStyle = .overFullScreen

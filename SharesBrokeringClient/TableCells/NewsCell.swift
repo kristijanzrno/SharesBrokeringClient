@@ -8,9 +8,9 @@
 
 import UIKit
 
+// Class created for a custom stock news cell
+
 class NewsCell: UITableViewCell{
-    
     @IBOutlet weak var newsTitle: UILabel!
     @IBOutlet weak var newsDescription: UILabel!
-    
 }

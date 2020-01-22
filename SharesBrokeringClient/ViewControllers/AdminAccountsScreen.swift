@@ -23,11 +23,11 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
+    // Fetching the data each time the view re-appears
     override func viewDidAppear(_ animated: Bool) {
         fetchData()
     }
-    
+    // Processing the fetched data
     func fetchAccountsHandler(xml:XMLIndexer?){
         let accList = WSClient().processAccounts(xml: xml)
         if(accList != nil){
@@ -36,6 +36,7 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
         }
     }
+    // Sending the getAccounts() request
     func fetchData(){
         WSClient().getAccounts(authUsername: authUsername!, authPassword: authPassword!, handler: fetchAccountsHandler)
     }
@@ -45,6 +46,7 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Creating the custom account cell and populating it
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "accountCell")! as! AccountCell
         cell.accountTitle.text = accounts[indexPath.row].accountName
         cell.accountBlocked.text = "Blocked: " + accounts[indexPath.row].accountBlocked.description
@@ -53,6 +55,7 @@ class AdminAccountsScreen: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let editAccountPopup = storyboard?.instantiateViewController(identifier: "editAccountPopup") as? EditAccountPopup {
+            // Displaying the edit account popup when an account is clicked
             editAccountPopup.account = accounts[indexPath.row]
             editAccountPopup.presenter = self
             editAccountPopup.modalTransitionStyle = .crossDissolve

@@ -9,6 +9,8 @@
 import UIKit
 import SWXMLHash
 
+// Account creation screen
+
 class CreateAccountScreen:UIViewController{
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -18,6 +20,7 @@ class CreateAccountScreen:UIViewController{
          super.viewDidLoad()
      }
      
+    // Account creation handler called by the asyn request when its done
     func createAccountHandler(xml: XMLIndexer?){
          if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:createAccountResponse")){
              statusTV.text = ""
@@ -25,8 +28,9 @@ class CreateAccountScreen:UIViewController{
          }else{
              statusTV.text = "Please try again..."
          }
-       
     }
+    
+    // Create account action connected to the button
     @IBAction func createAccount(_ sender: Any) {
           WSClient().createAccount(accountUsername: usernameTF.text ?? "", accountPassword: passwordTF.text ?? "", handler: createAccountHandler)
     }

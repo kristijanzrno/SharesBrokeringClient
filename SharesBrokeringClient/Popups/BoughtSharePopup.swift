@@ -28,16 +28,15 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.numberToSellTF.delegate = self
-        
     }
-    
+
     func updateUI(){
         companyNameTV.text = chosenStock!.companyName + " - " + chosenStock!.companySymbol
         numberOfSharesTV.text = "Number of shares: " + String(format:"%i", chosenStock!.noOfBoughtShares)
         valueTV.text = "Value: " + (stockInfo?.price!.currency)! + " " + String(format: "%.2f", (Double(chosenStock!.noOfBoughtShares) * (stockInfo?.price!.value)!))
-        
     }
     
+    // Getting the stock info and updating the UI with it
     func getStockInfo(xml: XMLIndexer?){
         let info = WSClient().processGetStock(xml: xml)
         if(info != nil){
@@ -46,9 +45,10 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
         }
     }
     
+    // Processing the sell request response from the service
     func sellStockHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:sellStockResponse")){
-              self.presentingViewController!.view.makeToast("Successfully sold shares!")
+            self.presentingViewController!.view.makeToast("Successfully sold shares!")
             presenter?.viewDidAppear(false)
             
             self.dismiss(animated: true, completion: nil)
@@ -57,13 +57,17 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
         }
     }
     
+    // Sending the sell request to the service
     @IBAction func sellStock(_ sender: Any) {
         WSClient().sellStock(authUsername: authUsername!, authPassword: authPassword!, companySymbol: chosenStock!.companySymbol, amount: numberToSellTF.text!, handler: sellStockHandler)
     }
     
+    // Dismissing the window
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // Setting the chosen stock before the popup is shown
     func setChosenStock(stock:BoughtStock?, par:AccountSharesScreen){
         self.presenter = par
         chosenStock = stock
@@ -71,15 +75,16 @@ class BoughtSharePopup: UIViewController, UITextFieldDelegate{
         
     }
     
+    // Updating the sell value as the amount is being written
     func textFieldDidChangeSelection(_ textField: UITextField) {
         var val:Double = 0.0
         if textField.text != ""{
-        val = Double(numberToSellTF.text!)!
+            val = Double(numberToSellTF.text!)!
         }
         toSellValueTV.text = "Sell value: " + stockInfo!.price!.currency + " - " + String(format:"%.2f", (val * (stockInfo?.price!.value)!))
-        
     }
     
+    // Allowing only numbers in the text field
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)

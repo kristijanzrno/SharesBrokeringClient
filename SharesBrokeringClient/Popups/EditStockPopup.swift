@@ -42,6 +42,7 @@ class EditStockPopup: UIViewController{
         }
     }
     
+    // Processing the response and exiting the popup if it's ok
     func toggleBlockHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:changeStockAccessResponse")){
             self.presentingViewController!.view.makeToast("Successfully changed stock access mode!")
@@ -52,6 +53,7 @@ class EditStockPopup: UIViewController{
         }
     }
     
+    // Sending the block request to the server
     @IBAction func toggleBlock(_ sender: Any) {
         let blocked = !(chosenStock!.blocked)
         WSClient().changeStockAccess(authUsername: authUsername!, authPassword: authPassword!, companySymbol: chosenStock!.companySymbol, blocked: blocked.description, handler: toggleBlockHandler)

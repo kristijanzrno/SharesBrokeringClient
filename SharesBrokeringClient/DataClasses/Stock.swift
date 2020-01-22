@@ -8,6 +8,10 @@
 
 import SWXMLHash
 
+
+// Struct object to resemble SOAP service stock object
+// XML mapped to the object using SWXMLHash library
+
 struct Stock: XMLIndexerDeserializable{
     let companyName:String
     let companySymbol:String

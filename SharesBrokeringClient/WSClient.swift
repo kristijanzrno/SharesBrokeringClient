@@ -34,7 +34,6 @@ class WSClient {
     }
     
     // Processing Get Accounts requests
-    
     func getAccounts(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:getAccounts", parameters: ["arg0":authUsername,"arg1":authPassword], callback: handler)
     }
@@ -58,7 +57,6 @@ class WSClient {
     }
     
     // Processing get all stocks requests
-    
     func getAllStocks(authUsername: String, authPassword: String, currency: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:getAllStocks", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":currency], callback: handler)
     }
@@ -76,24 +74,23 @@ class WSClient {
     }
     
     // Processing search functionality
-    
     func searchStocks(authUsername: String, authPassword: String, searchFor:String, orderBy:String, currency: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:searchStocks", parameters: ["arg0":authUsername,"arg1":authPassword,"arg2":searchFor,"arg3":orderBy, "arg4":currency], callback: handler)
     }
+    
     func processSearchStocks(xml:XMLIndexer?)->[Stock]?{
         if(xml != nil){
-                   do{
-                       let stocks: [Stock] = try xml!["S:Envelope"]["S:Body"]["ns2:searchStocksResponse"]["return"].value()
-                       return stocks
-                   }catch{
-                       print("Could not parse stocks...")
-                   }
-               }
-               return nil
+            do{
+                let stocks: [Stock] = try xml!["S:Envelope"]["S:Body"]["ns2:searchStocksResponse"]["return"].value()
+                return stocks
+            }catch{
+                print("Could not parse stocks...")
+            }
+        }
+        return nil
     }
     
     // Processing get stock requests
-    
     func getStock(authUsername: String, authPassword: String, companySymbol:String, currency: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:getStock", parameters: ["arg0":authUsername,"arg1":authPassword, "arg2":companySymbol, "arg3":currency], callback: handler)
     }
@@ -156,12 +153,9 @@ class WSClient {
     
     
     //Processing getting account currency list
-    
     func getCurrencyList(authUsername: String, authPassword: String, handler:@escaping(XMLIndexer?)->Void){
         sendRequest(method: "ns4:getCurrencyList", parameters: ["arg0":authUsername,"arg1":authPassword], callback: handler)
     }
-    
-    
     
     func processCurrencyList(xml: XMLIndexer?) ->[String]?{
         if(xml != nil){
@@ -187,7 +181,7 @@ class WSClient {
         var xml:XMLIndexer? = nil
         AlamofireSoap.soapRequest("http://localhost:8080/BrokeringWS/BrokeringWS?WSDL", soapmethod: method,
                                   soapparameters: parameters, namespace: "").responseString { response in
-                                    //successful request
+                                    // Successful request
                                     if let xmlString = response.value{
                                         xml = SWXMLHash.parse(xmlString)
                                         callback(xml)

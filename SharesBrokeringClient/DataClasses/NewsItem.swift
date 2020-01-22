@@ -8,28 +8,27 @@
 
 import Foundation
 
-
-
+// Struct object to resemble external online REST service news objects
+// XML mapped to the object using SWXMLHash library
 
 struct NewsBase : Codable {
     let status : String?
     let totalResults : Int?
     let articles : [Articles]?
-
+    
     enum CodingKeys: String, CodingKey {
-
         case status = "status"
         case totalResults = "totalResults"
         case articles = "articles"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decodeIfPresent(String.self, forKey: .status)
         totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
         articles = try values.decodeIfPresent([Articles].self, forKey: .articles)
     }
-
+    
 }
 
 struct Articles : Codable {
@@ -41,9 +40,9 @@ struct Articles : Codable {
     let urlToImage : String?
     let publishedAt : String?
     let content : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case source = "source"
         case author = "author"
         case title = "title"
@@ -53,7 +52,7 @@ struct Articles : Codable {
         case publishedAt = "publishedAt"
         case content = "content"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         source = try values.decodeIfPresent(Source.self, forKey: .source)
@@ -65,24 +64,24 @@ struct Articles : Codable {
         publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
         content = try values.decodeIfPresent(String.self, forKey: .content)
     }
-
+    
 }
 
 
 struct Source : Codable {
     let id : String?
     let name : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case id = "id"
         case name = "name"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
     }
-
+    
 }

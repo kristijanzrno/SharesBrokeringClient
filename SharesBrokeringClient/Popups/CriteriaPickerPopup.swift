@@ -15,7 +15,7 @@ class CriteriaPickerPopup: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var presenter:MainScreen? = nil
     var adminPresenter:AdminStocksScreen? = nil
     var previouslySelected:String = "name-asc"
-
+    
     var selected:String = ""
     var selectedName:String = ""
     
@@ -25,10 +25,9 @@ class CriteriaPickerPopup: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.criteriaPicker.delegate = self
-              self.criteriaPicker.dataSource = self
+        self.criteriaPicker.dataSource = self
         let selectedIndex = xmlOptions.firstIndex(of: previouslySelected)
         criteriaPicker.selectRow(selectedIndex!, inComponent: 0, animated: false)
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -38,14 +37,17 @@ class CriteriaPickerPopup: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return options.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return options[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selected = xmlOptions[row]
         selectedName = options[row]
     }
     
+    // Setting the picked criteria to the parent window (main screen / admin stocks screen)
     @IBAction func pickCriteria(_ sender: Any) {
         if presenter == nil{
             adminPresenter?.setSearchCriteria(criteria: selected, criteriaName:selectedName)

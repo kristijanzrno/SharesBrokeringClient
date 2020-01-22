@@ -16,11 +16,12 @@ class ChangePasswordPopup: UIViewController{
     @IBOutlet weak var newPasswordTV: UITextField!
     
     var authUsername:String? = UserDefaults.standard.string(forKey: "username")
-  
+    
     override func viewDidLoad() {
-             super.viewDidLoad()
+        super.viewDidLoad()
     }
     
+    // Processing the change password response
     func changePasswordHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:changeAccountPasswordResponse")){
             UserDefaults.standard.set(newPasswordTV.text, forKey: "password")
@@ -30,9 +31,12 @@ class ChangePasswordPopup: UIViewController{
             self.view.makeToast("Could not change password...")
         }
     }
+    
+    // Sending the change password request to the WS
     @IBAction func changePassword(_ sender: Any) {
         WSClient().changeAccountPassword(authUsername: authUsername!, authPassword: currentPasswordTV.text!, newPassword: newPasswordTV.text!, handler: changePasswordHandler)
     }
+    
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

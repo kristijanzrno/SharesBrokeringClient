@@ -8,9 +8,10 @@
 
 import UIKit
 
+// Class created for a custom My Share cell
+
 class MyShareCell: UITableViewCell {
     @IBOutlet weak var stockTitle: UILabel!
     @IBOutlet weak var stockSymbol: UILabel!
     @IBOutlet weak var boughtShares: UILabel!
-    
 }

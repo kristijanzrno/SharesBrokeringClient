@@ -8,9 +8,9 @@
 
 import UIKit
 
+// Class created for a custom Account cell in administrator utilities
+
 class AccountCell: UITableViewCell {
     @IBOutlet weak var accountTitle: UILabel!
     @IBOutlet weak var accountBlocked: UILabel!
-
-    
 }

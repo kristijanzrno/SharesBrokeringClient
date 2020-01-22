@@ -19,13 +19,13 @@ class LoginScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        // If the user is logged in, automatically send the login request to the service
         if(UserDefaults.standard.bool(forKey: "loggedIn")){
             WSClient().login(authUsername: UserDefaults.standard.string(forKey: "username") ?? "", authPassword: UserDefaults.standard.string(forKey: "password") ?? "", handler: loginHandler)
         }
     }
     
-    
-    
+    // Login handler called when the asynchronous request is finished
     func loginHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:loginResponse")){
             //go to the next screen
@@ -36,13 +36,12 @@ class LoginScreen: UIViewController {
                 passwordTF.text = ""
                 self.present(tabViewController, animated: true, completion: nil)
             }
-            
         }else{
             statusTV.text = "Could not log in..."
         }
-        
     }
     
+    // Login action connected to the button
     @IBAction func login(_ sender: Any) {
         UserDefaults.standard.set(usernameTF.text ?? "", forKey: "username")
         UserDefaults.standard.set(passwordTF.text ?? "", forKey: "password")

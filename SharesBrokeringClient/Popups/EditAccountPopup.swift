@@ -38,6 +38,7 @@ class EditAccountPopup: UIViewController{
         }
     }
     
+    // Handling the response of the "account block" request to the WS
     func blockHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:changeAccountAccessResponse")){
             self.presentingViewController!.view.makeToast("Successfully changed account access mode!")
@@ -48,6 +49,7 @@ class EditAccountPopup: UIViewController{
         }
     }
     
+    // Processing the account deletion response
     func deleteAccountHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:deleteAccountResponse")){
             self.presentingViewController!.view.makeToast("Successfully deleted account!")
@@ -58,11 +60,13 @@ class EditAccountPopup: UIViewController{
         }
     }
     
+    // Sending the block request to the server
     @IBAction func toggleBlock(_ sender: Any) {
         let blocked:Bool? = !(account!.accountBlocked)
         WSClient().changeAccountAccess(authUsername: authUsername!, authPassword: authPassword!, accountName: account!.accountName, blocked: blocked!.description, handler: blockHandler)
     }
     
+    // Sending the delete account request to the server
     @IBAction func deleteAccount(_ sender: Any) {
         let alert = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete this account?", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in

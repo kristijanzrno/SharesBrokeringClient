@@ -37,6 +37,7 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
         updateUI()
     }
     
+    // Function to assign the stock values to the UI
     func updateUI(){
         companyNameTV.text = chosenStock!.companyName + " (" + chosenStock!.companySymbol + ")"
         valueTV.text = "Value: (" + (chosenStock?.price!.currency)! + ") " + String(format:"%.2f", (chosenStock?.price!.value)!)
@@ -45,11 +46,13 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
         fetchNews()
     }
     
+    // Setting the chosen stock object from the main screen
     func setChosenStock(stock:Stock?, par:MainScreen){
         presenter = par
         chosenStock = stock
     }
     
+    // Processing the buy share response
     func buySharesHandler(xml: XMLIndexer?){
         if(WSClient().getBoolResponse(xml: xml, methodName: "ns2:buyStockResponse")){
             self.presentingViewController!.view.makeToast("Successfully bought shares!")
@@ -58,17 +61,19 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
         }else{
             self.view.makeToast("Could not buy shares...")
         }
-        
     }
     
+    // Sending the buy share request to the service
     @IBAction func buyShares(_ sender: Any) {
         WSClient().buyStock(authUsername: authUsername!, authPassword: authPassword!, companySymbol: chosenStock!.companySymbol, amount: buySharesTF.text!, handler: buySharesHandler)
     }
     
+    // Dismissing the window
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // Fetching the news from an external API
     func fetchNews(){
         let url=URL(string:"https://newsapi.org/v2/everything?q=" + chosenStock!.companySymbol + "&apiKey=7e4d79a7707c443588f0323628bd180d")
         var request = URLRequest(url: url!)
@@ -87,10 +92,9 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
             }
         }
         task.resume()
-        
     }
     
-    
+    // Updating the "purchase value" text view when the "to buy" amount is changed
     func textFieldDidChangeSelection(_ textField: UITextField) {
         var val:Double = 0.0
         if textField.text != ""{
@@ -99,6 +103,7 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
         buyValueTV.text = "Purchase value: (" + chosenStock!.price!.currency + ") " + String(format:"%.2f", (val * (chosenStock?.price!.value)!))
     }
     
+    // Allowing only numbers in the amount text field
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
@@ -111,6 +116,7 @@ class StockPopup: UIViewController, UITextFieldDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Creating the custom news item cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell")! as! NewsCell
         cell.newsTitle.text = news[indexPath.row].title
         cell.newsDescription.text = news[indexPath.row].description
